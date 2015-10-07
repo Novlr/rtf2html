@@ -1,0 +1,41 @@
+{
+  "name": "rtf2html",
+  "version": "1.0.0",
+  "description": "Convert RTF texts to html format",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rtf",
+    "text",
+    "html",
+    "format"
+  ],
+  "author": {
+    "name": "Manish Periwal"
+  },
+  "license": "ISC",
+  "gitHead": "d23ea2cab1a8cde65f286fe5e7f581c90c2741a9",
+  "_id": "rtf2html@1.0.0",
+  "_shasum": "ff8c5a15daf30a1ff014136dca2e8f6266bc67e8",
+  "_from": "rtf2html@*",
+  "_npmVersion": "1.4.23",
+  "_npmUser": {
+    "name": "manishperiwal",
+    "email": "manishperiwal2009@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "manishperiwal",
+      "email": "manishperiwal2009@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "ff8c5a15daf30a1ff014136dca2e8f6266bc67e8",
+    "tarball": "http://registry.npmjs.org/rtf2html/-/rtf2html-1.0.0.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/rtf2html/-/rtf2html-1.0.0.tgz",
+  "readme": "ERROR: No README data found!"
+}
