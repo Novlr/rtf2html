@@ -1440,6 +1440,7 @@ module.exports = function(txt, baseurl, out, ver)
         parser.HandleDest("pntxtb", parser.HandleIgnore);
         parser.HandleDest("pntext", parser.HandleIgnore);
         parser.HandleDest(";rtf;object", Pkg_);
+        parser.HandleDest(";rtf;listtext", ListText_);
         parser.HandleDest(";rtf;object;objclass", parser.HandlePcData);
         parser.HandleDest(";rtf;object;objdata", PkgData_);
         parser.HandleDest(";rtf;object;result", parser.HandleIgnore);
@@ -1512,6 +1513,7 @@ module.exports = function(txt, baseurl, out, ver)
                                 break;
 
                         case "li":
+                                /* Comment out as indented text isn't necessarily a blockquote.
                                 if (o.bullets)
                                 {
                                         // ignore when bullets are on
@@ -1527,6 +1529,7 @@ module.exports = function(txt, baseurl, out, ver)
                                 else if (o.indented)
                                 {
                                 }
+                                */
                                 break;
 
                         case "f":
@@ -1728,6 +1731,21 @@ module.exports = function(txt, baseurl, out, ver)
                 {
                         o.stk[o.stk.length-2].bullets = true;
                         o.stk[o.stk.length-2].html.push("<UL><LI>");
+                }
+        }
+
+        //-[Bullets_()]-----------------------------------------------------------
+        function ListText_(t, s, i, o)
+        {
+                if (513 === t)
+                {
+                        var bullets = o.stk[o.stk.length-2].bullets;
+                        o.stk[o.stk.length-2].bullets = true;
+                        if (!bullets) {
+                                o.stk[o.stk.length-2].html.push("<UL><LI>");
+                        } else {
+                                o.stk[o.stk.length-2].html.push("</LI><LI>");
+                        }
                 }
         }
 
