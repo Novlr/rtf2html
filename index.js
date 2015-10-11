@@ -1642,6 +1642,13 @@ module.exports = function(txt, baseurl, out, ver)
                                 else
                                         o.html.push("<I>");
                                 break;
+                        case "strike":
+                                if (0 === val)
+                                        o.html.push("</S>");
+                                else
+                                        o.html.push("<S>");
+                                break;
+                        case "ul":
                         case "u":
                                 if (0 === val)
                                         o.html.push("</U>");
