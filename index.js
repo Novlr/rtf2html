@@ -1444,6 +1444,31 @@ module.exports = function(txt, baseurl, out, ver)
         parser.HandleDest(";rtf;object;objclass", parser.HandlePcData);
         parser.HandleDest(";rtf;object;objdata", PkgData_);
         parser.HandleDest(";rtf;object;result", parser.HandleIgnore);
+        parser.HandleDest(";rtf;rtlch", Main_);
+        parser.HandleDest(";rtf;fonttbl;fbiminor", parser.HandleIgnore);
+        parser.HandleDest(";rtf;fonttbl;fhiminor", parser.HandleIgnore);
+        parser.HandleDest(";rtf;fonttbl;fdbminor", parser.HandleIgnore);
+        parser.HandleDest(";rtf;fonttbl;flominor", parser.HandleIgnore);
+        parser.HandleDest(";rtf;fonttbl;fbimajor", parser.HandleIgnore);
+        parser.HandleDest(";rtf;fonttbl;fhimajor", parser.HandleIgnore);
+        parser.HandleDest(";rtf;fonttbl;fdbmajor", parser.HandleIgnore);
+        parser.HandleDest(";rtf;fonttbl;flomajor", parser.HandleIgnore);
+        parser.HandleDest(";rtf;mmath", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info;vern", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info;author", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info;nofpages", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info;nofwords", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info;nofcharsws", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info;nofchars", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info;edmins", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info;version", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info;revtim", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info;creatim", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info;operator", parser.HandleIgnore);
+        parser.HandleDest(";rtf;info", parser.HandleIgnore);
+        parser.HandleDest(";rtf;stylesheet", parser.HandleIgnore);
+        parser.HandleDest(";rtf;stylesheet;s", parser.HandleIgnore);
+        parser.HandleDest(";rtf;stylesheet;ql", parser.HandleIgnore);
         parser.HandleDest(";rtf;object;result;pict", parser.HandleIgnore);
 
         parser.Document(true).baseurl = baseurl;
@@ -1466,7 +1491,8 @@ module.exports = function(txt, baseurl, out, ver)
                         EndPara_();
 
                         // build string and set it on main document
-                        o.doc.html = o.html.join("");
+                        o.doc.html = o.doc.html || "";
+                        o.doc.html += o.html.join("");
                 }
 
                 var typ = RtfTkTyp(t);
@@ -1533,6 +1559,7 @@ module.exports = function(txt, baseurl, out, ver)
                                 break;
 
                         case "f":
+                                /* Commented out as we have no need for font definitions
                                 o.font = o.doc.fonts[val];
                                 
                                 //WScript.Echo("Selected Font " + val);
@@ -1552,6 +1579,7 @@ module.exports = function(txt, baseurl, out, ver)
                                         o.monofont = false;
                                 }
 
+                                */
                                 break;
 
                         // font size
